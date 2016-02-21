@@ -33,10 +33,28 @@ Install:
 
 11- Install nodemon (globally).
 
-12- Install react y react-dom.
+12- Install react and react-dom.
 
 13- Install webpack (globally).
 
 14- Install babel loader babel-core babel-preset-es-2015 y babel-preset-react.
 
 15- Install babel-preset-stage-0.
+
+16- Install mongodb kerberos
+
+17- Create a global var to hold connection to mongoDB db.
+
+18- Install jquery
+
+19- Install flux
+
+20- Install events 
+
+21- Install graphql and express-graphql
+
+22- Create data folder to hold schema.js. This file contains a function which receives the db and has diferent functions to query the bd and return the data.
+
+23- Modify server.js to load db using the global var defined in step 17.
+
+24- Now we can use http://localhost:3000/graphql to query manually the bd using a browser.
