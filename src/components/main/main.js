@@ -1,11 +1,20 @@
-import React,{Component} from "react";
+import React,{Component} from 'react';
+import Header from '../header/header';
+import LinksList from "../linksList/linksList";
+
+import jQuery from 'jquery';
+
+let $=jQuery;
 
 class Main extends Component {
 
 	render () {
 		return (
 			<div>
-				<h3>Hello from Main component created with ReactJS</h3>
+				<Header />
+				<div className="container-fluid">
+					<LinksList />
+				</div>
 			</div>
 		)
 	}

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.6",
     "events": "^1.1.0",
     "express": "^4.13.4",
     "express-graphql": "^0.4.9",
