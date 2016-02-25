@@ -36,20 +36,26 @@ class LinksList extends Component {
 		});
 
 		return (
-			<div>
-				<table className='table'>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Id</th>
-							<th>Title</th>
-							<th>Descr.</th>
-						</tr>
-					</thead>
-					<tbody>
-						{row}
-					</tbody>
-				</table>
+			<div className="panel panel-primary">
+				<div className="panel-heading">Usefull links</div>
+				
+					<table className='table'>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Id</th>
+								<th>Title</th>
+								<th>Descr.</th>
+							</tr>
+						</thead>
+						<tbody>
+							{row}
+						</tbody>
+					</table>
+				
+				<div className="panel-footer">
+					<p>Nº de links : {this.linksArray.length}</p>
+				</div>
 			</div>
 		);
 	}

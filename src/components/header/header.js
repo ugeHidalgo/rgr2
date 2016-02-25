@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import jQuery from 'jquery';
+import './header.css';
 
 
 class Header extends Component {
 
 	render() {
 		return (
-			<nav className="navbar nabvar-default">
+			<nav className="navbar navbar-inverse">
 				<div className="container-fluid">
-					<p className="navbar-brand">My Links</p>
-					<ul className="navbar nabvar-nav">
-						<li>Home</li>
-						<li>Links</li>
-						<li>About</li>
+					<div className="navBar-header">
+						<a className="navbar-brand">My Links</a>
+					</div>
+					<ul className="nav navbar-nav">
+						<li><a href='#'>Home</a></li>
+						<li><a href='#'>Links</a></li>
+						<li><a href='#'>About</a></li>
 					</ul>
 				</div>
 			</nav>
