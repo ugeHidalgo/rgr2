@@ -4,6 +4,7 @@ import schema from "../data/schema";
 import GraphQLHTTP from "express-graphql";
 import {MongoClient} from "mongodb";
 
+
 let server = express();
 server.use(express.static('public'));
 
@@ -22,6 +23,7 @@ MongoClient.connect (process.env.MONGO_URL, (err,database) => {
 
 
 server.listen(port, () => {
-	console.log ('- Listening on port 3000');
+	console.log ('- Listening on port 3000 --------------------------------------------------' );
+	console.log ('  DB: ' + process.env.MONGO_URL);
 });
 

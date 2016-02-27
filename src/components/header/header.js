@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import jQuery from 'jquery';
 import './header.css';
+import jQuery from 'jquery';
 
 
 class Header extends Component {
