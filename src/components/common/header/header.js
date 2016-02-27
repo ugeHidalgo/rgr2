@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router";
 import './header.css';
 import jQuery from 'jquery';
 
 
-class Header extends Component {
+class Header extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-inverse">
+			<nav className="navbar navbar-default">
 				<div className="container-fluid">
 					<div className="navBar-header">
 						<a className="navbar-brand">My Links</a>
