@@ -1,8 +1,31 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, Link} from 'react-router';
 
-import Main from "../main/main";
+import Header from '../common/header/header';
+import LinksList from "../linksList/linksList";
+
 import jQuery from 'jquery';
 
+let $=jQuery;
 
-ReactDOM.render (<Main/> ,document.getElementById('react'));
+class App extends React.Component {
+
+	render () {
+		return (
+			<div>
+				<Header />
+				<div className="container-fluid">
+					{this.props.children}
+				</div>
+			</div>
+		)
+	}
+};
+
+export default App
+
+
+// <div className="container-fluid">
+// 					<RouteHandler />
+// 				</div>

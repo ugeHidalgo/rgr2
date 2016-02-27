@@ -1,41 +1,32 @@
-'use strict';
 
-var React = require('react');
+import React from "react";
+import {
+		Router,
+		Route,
+		hashHistory,
+		IndexRoute
+	} from "react-router";
+//import { createHashHistory } from "history";
 
-var Router = require ('react-router');
-var DefaultRoute = Router.DefaultRoute;
-var Route = Router.Route;
-var NotFoundRoute = Router.NotFoundRoute;
-var Redirect = Router.Redirect;
+import App from "./components/app/app";
+import Home from "./components/homepage/homepage";
+import LinksList from "./components/linksList/linksList";
+import About from "./components/common/about";
+import NotFound from "./components/common/notfoundpage";
+
+
+//const appHistory = useRouterHistory(createHashHistory)({queryKey:false})
 
 var routes = (
 	//Este primero es el handler de la aplicación en general
-	<Route name="app" path="/" handler={require('./components/app')}>
-
-		//Esta es la ruta por defecto a la página inicial
-		<DefaultRoute handler={require('./components/homePage')} />
-
-		//Esto son rutas a otras páginas
-		<Route name='about' handler={require('./components/about/aboutPage')} />
-
-		<Route name='authors' handler={require('./components/authors/authorPage')} />
-		<Route name='manageAuthor' path='author/:id' handler={require('./components/authors/manageAuthorPage')} />
-		<Route name='addAuthor' path='author' handler={require('./components/authors/manageAuthorPage')} />
-
-		<Route name='courses' handler={require('./components/courses/coursePage')} />
-		<Route name='manageCourse' path='course/:id' handler={require('./components/courses/manageCoursePage')} />
-		<Route name='addCourse' path='course' handler={require('./components/courses/manageCoursePage')}/>
-
-		//Esta es la ruta de no encontrado
-		<NotFoundRoute handler={require('./components/notFoundPage')} />
-
-		//Esto son redirecciones para el caso de que pongan mal algunas palabras
-		<Redirect from='about-us' to='about' />
-		<Redirect from='about/*' to='about' />
-
-		<Redirect from='autors' to='authors' />
-	</Route>
+	<Router history={hashHistory}>
+		<Route path="/" component={App}>
+			<IndexRoute component={Home}/>
+			<Route path="/homepage" component={Home}/>
+			<Route path="/linkslist" component={LinksList}/>
+			<Route path="/about" component={About}/>
+		</Route>
+	</Router>
 );
 
-module.exports = routes;
-
+export default routes

@@ -1,23 +1,27 @@
-import React,{Component} from 'react';
-import Header from '../common/header/header';
-import LinksList from "../linksList/linksList";
 
-import jQuery from 'jquery';
+//import jQuery from 'jquery';
+//$ = jQuery = require("jquery");
+import React from 'react'; 
+import ReactDOM from "react-dom";
+import { Router, Route } from 'react-router';
+import routes from '../../routes';
 
-let $=jQuery;
+//import App from "../app/app";
 
-class Main extends Component {
 
-	render () {
-		return (
-			<div>
-				<Header />
-				<div className="container-fluid">
-					<LinksList />
-				</div>
-			</div>
-		)
-	}
-};
+//ReactDOM.render (<App/> ,document.getElementById('app'));
 
-export default Main
+ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
+
+//ReactDOM.render(<routes/> ,document.getElementById('app'));
+
+
+// Router.run(routes, function (Handler) {
+//  	React.render(<Handler />, document.getElementById('app'));
+//  });
+
+/* Se obtiene el elemento app del index.html y ahí se renderiza el contenido de Handler
+   Handler se obtiene meriante routes y dependiendo de la url fijada devolverá un objeto
+   u otro.
+   Al empezar la aplicación cogerá de router y hará el handler igual a componentes/app/app.js
+   */

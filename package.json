@@ -19,7 +19,8 @@
     "kerberos": "0.0.18",
     "mongodb": "^2.1.7",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
