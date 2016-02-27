@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Header from '../header/header';
+import Header from '../common/header/header';
 import LinksList from "../linksList/linksList";
 
 import jQuery from 'jquery';
