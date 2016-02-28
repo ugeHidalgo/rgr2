@@ -10,9 +10,6 @@ class Header extends React.Component {
 		return (
 			<nav className="navbar navbar-default navbar-inner">
 				<div className="container-fluid">
-					<div className="navBar-header">
-						<a className="navbar-brand">My Links</a>
-					</div>
 					<ul className="nav navbar-nav">
 						<li><Link to='/homepage'>Home</Link></li>
 						<li><Link to='/linkslist'>Links</Link></li>

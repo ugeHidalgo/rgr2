@@ -1,3 +1,11 @@
 .homePage-text {
- 	color : white;
+ 	color : black;
+ }
+
+ .jumbotron {
+ 	background: rgba(200,54,54,0.2);
+ }
+
+ #jumbotron-title {
+ 	color: black;
  }

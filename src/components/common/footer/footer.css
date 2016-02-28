@@ -13,3 +13,11 @@
 #footer-bar {
 	text-align: center;
 }
+
+.svg-icon {
+	fill: #444444 ;
+}
+
+.svg-icon:hover {
+	fill: #000000;
+}
