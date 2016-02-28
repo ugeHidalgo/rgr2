@@ -9,9 +9,11 @@ class Home extends React.Component {
 		return (
 			<div>
 				<div className="jumbotron">
-					<h1>Welcome to this React/Flux/GraphQl sample</h1>
-					<p>React, React Router, and Flux for ultra-responsive web apps</p>
-					<h3>by ugeHidalgo 2016</h3>
+					<div className="text-center">
+						<h1>Welcome to this React/Flux/GraphQl sample</h1>
+						<p>React, React Router, and Flux for ultra-responsive web apps</p>
+						<h3>by ugeHidalgo 2016</h3>
+					</div>
 				</div>
 				<div className="container-fluid homePage-text">
 					<p>
@@ -30,7 +32,7 @@ class Home extends React.Component {
 						Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, 
 						augue velit cursus nunc,
 					</p>
-					
+
 					<p>
 						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
 						Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 

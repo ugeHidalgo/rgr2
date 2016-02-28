@@ -8,7 +8,7 @@ class Header extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-default">
+			<nav className="navbar navbar-default navbar-inner">
 				<div className="container-fluid">
 					<div className="navBar-header">
 						<a className="navbar-brand">My Links</a>
@@ -18,11 +18,16 @@ class Header extends React.Component {
 						<li><Link to='/linkslist'>Links</Link></li>
 						<li><Link to='/about'>About</Link></li>
 					</ul>
+					<div className="navbar-right">
+					<ul className="nav navbar-nav">
+						<li><Link to='/homepage'>Login</Link></li>
+						<li><Link to='/homepage'>Register</Link></li>
+					</ul>
+					</div> 
 				</div>
-			</nav>
+			</nav> //navbar navbar-default navbar-inner
 		);
 	}
-
 }
 
 export default Header

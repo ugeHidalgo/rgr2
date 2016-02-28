@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link} from 'react-router';
 
-import MainBar from '../common/mainbar';
 import Header from '../common/header/header';
 import LinksList from "../linksList/linksList";
+import Footer from '../common/footer/footer';
 
 import jQuery from 'jquery';
 import './app.css';
@@ -16,19 +16,14 @@ class App extends React.Component {
 	render () {
 		return (
 			<div>
-				<MainBar />
 				<Header />
 				<div className="container-fluid">
 					{this.props.children}
 				</div>
+				<Footer />
 			</div>
 		)
 	}
 };
 
 export default App
-
-
-// <div className="container-fluid">
-// 					<RouteHandler />
-// 				</div>
