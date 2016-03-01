@@ -11,9 +11,10 @@ module.exports = {
                 //se aplicara a todo fichero que cuadre con test (termine en js)
                 test: /\.js?$/, 
                 loader: 'babel-loader',
-                exclude: /(node_modules|public)/,
+                exclude: /(node_modules|public|data)/,
                 query: {
-                    presets: ['react', 'es2015', 'stage-0']
+                    presets: ['react', 'es2015', 'stage-0'],
+                    plugins: ['./babelRelayPlugin']
                 }  //Da acceso a todas las funcionalidades de ES2015, entre ellas los propTypes 
                    //y defaultProps dentro de la clase.
                    //Antes es necesario instalarlo con npm.

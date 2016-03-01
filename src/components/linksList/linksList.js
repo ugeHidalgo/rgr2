@@ -19,7 +19,7 @@ class LinksList extends Component {
         
     //Sirven para establecer un valor por defecto en caso de que falte.
     static defaultProps = {
-        limit: 5
+        limit: 7
     };
 
 	constructor(props){

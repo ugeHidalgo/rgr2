@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Router, Route } from 'react-router';
 import routes from '../../routes';
 
+import Relay from "react-relay";
+
 ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
 
 /* Se obtiene el elemento app del index.html y ahí se renderiza el contenido 
@@ -10,3 +12,12 @@ ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
    Al empezar la aplicación cogerá de router el elemento que apunta a /, es decir
    componentes/app/app.js
 */
+
+console.log (
+	Relay.QL`
+	query Test {
+		links {
+			title
+		}
+	}`
+)
