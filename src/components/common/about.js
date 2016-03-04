@@ -11,7 +11,7 @@ class About extends Component {
 					This application uses the following thecnologies :
 					<ul>
 						<li>React</li>
-						<li>React Router</li>
+						<li>React-Router</li>
 						<li>Flux</li>
 						<li>NodeJS</li>
 						<li>WebPack</li>

@@ -1,16 +1,17 @@
-import React, { Component, PropTypes } from "react";
+import React, { PropTypes } from "react";
+import Relay from "react-relay";
 import './linksList.css';
 import jQuery from 'jquery';
-import Api from '../../api/api';
-import LinkStore from '../../stores/linksStore';
+// import Api from '../../api/api';
+// import LinkStore from '../../stores/linksStore';
 
 //Esta función se usa para obtener todos los links del store
-let _getAppState = () => {
-    return {links : LinkStore.getAll()};  
-};
+// let _getAppState = () => {
+//     return {links : LinkStore.getAll()};  
+// };
 
 
-class LinksList extends Component {
+class LinksList extends React.Component {
 
 	//Sirven para forzar validaciones, en este caso limit debe ser un número.
     static propTypes = {
@@ -19,39 +20,39 @@ class LinksList extends Component {
         
     //Sirven para establecer un valor por defecto en caso de que falte.
     static defaultProps = {
-        limit: 7
+        limit: 5
     };
 
-	constructor(props){
-        super(props);
+	// constructor(props){
+ //        super(props);
         
-        //Hay que leer los datos de los links de 
-        //manera que al crear la clase ya se tengan los datos.
-        this.state = _getAppState();
+ //        //Hay que leer los datos de los links de 
+ //        //manera que al crear la clase ya se tengan los datos.
+ //        this.state = _getAppState();
         
-        //Se define la función que se asocia al evento onChange
-        this.onChange = this.onChange.bind(this);
-    }
+ //        //Se define la función que se asocia al evento onChange
+ //        this.onChange = this.onChange.bind(this);
+ //    }
 
-    componentDidMount(){
+ //    componentDidMount(){
 
-        Api.fetchLinks();
+ //        Api.fetchLinks();
 
-        //Una vez mostrada la pantalla crea un evento que se lanze cuando haya un change
-        LinkStore.on('change',this.onChange);
-    }
+ //        //Una vez mostrada la pantalla crea un evento que se lanze cuando haya un change
+ //        LinkStore.on('change',this.onChange);
+ //    }
 
-    componentWilUnmount() {
+ //    componentWilUnmount() {
 
-        //Quita el evento antes de dejar de mostrar la pantalla al salir de ella
-        LinkStore.removeListener('change',this.onChange);
-    }
+ //        //Quita el evento antes de dejar de mostrar la pantalla al salir de ella
+ //        LinkStore.removeListener('change',this.onChange);
+ //    }
     
-    //Este método detecta el event change y reresca el componente.
-    onChange(){
-        console.log ('- (4) The componet has detected a change in the store');
-        this.setState(_getAppState());
-    }
+ //    //Este método detecta el event change y reresca el componente.
+ //    onChange(){
+ //        console.log ('- (4) The componet has detected a change in the store');
+ //        this.setState(_getAppState());
+ //    }
 
 
 	render() {
@@ -59,8 +60,8 @@ class LinksList extends Component {
 		// if (this.state.links.length<1){
 		// 	this.state.links.push({"_id":"", "url":"", "title":"", "description":""});
 		// }
-
-		let row = this.state.links.slice(0,this.props.limit).map(link => {
+					//Para acceder al store del schema usaremos this.props
+		let row = this.props.store.links.slice(0,this.props.limit).map(link => {
 			return (
 				<tr key={link._id}>
 					<td><input type="checkbox" aria-label="..."/></td>
@@ -74,7 +75,6 @@ class LinksList extends Component {
 		return (
 			<div className="panel panel-primary">
 				<div className="panel-heading">Usefull links</div>
-				
 				<table className='table'>
 					<thead>
 						<tr>
@@ -88,17 +88,30 @@ class LinksList extends Component {
 						{row}
 					</tbody>
 				</table>
-				
 				<div className="panel-footer">
 					<div className="footerText">
 						<p>Nº de links : {this.props.limit}/{this.state.links.length}</p>
 					</div>
 				</div>
-				
 			</div>
 		);
 	}
-
 }
+
+//Declare data requirements for LinksList component
+LinksList = Relay.createContainer (LinksList, {
+	fragments: {
+		store: () => Relay.Ql`
+			fragment on Store {
+				links {
+					_id,
+					title,
+					url,
+					description
+				}
+			}
+		`
+	}
+});
 
 export default LinksList

@@ -5,6 +5,19 @@ import routes from '../../routes';
 
 import Relay from "react-relay";
 
+
+class HomeRoute extends Relay.Route {
+	static routeName = 'Home';
+	static queries = {
+		store: (Component) => Relay.Ql`
+			query MainQuery {
+				store { ${Component.getFragment('store')}}
+			}
+		`
+	}
+}
+
+
 ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
 
 /* Se obtiene el elemento app del index.html y ahí se renderiza el contenido 
@@ -13,11 +26,11 @@ ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
    componentes/app/app.js
 */
 
-console.log (
-	Relay.QL`
-	query Test {
-		links {
-			title
-		}
-	}`
-)
+// console.log (
+// 	Relay.QL`
+// 	query Test {
+// 		links {
+// 			title
+// 		}
+// 	}`
+// )

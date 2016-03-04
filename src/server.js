@@ -10,14 +10,15 @@ import { introspectionQuery } from 'graphql/utilities';
 import fs from 'fs';
 import path from 'path';
 
-
 let server = express();
 server.use(express.static('public'));
 
 
 (async() =>{
 	let db;
-	let schema;
+	let schema; //MONGO_URL es una variable de entorno definida así:
+	// export MONGO_URL=mongodb://<dbuser>:<dbpassword>@ds019698.mlab.com:19698/training
+	// export MONGO_URL=mongodb://traininguser:traininguser@ds019698.mlab.com:19698/training
 	MongoClient.connect (process.env.MONGO_URL, (err,database) => {
 
 		if (err) throw err;

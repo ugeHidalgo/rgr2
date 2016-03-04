@@ -5,13 +5,13 @@ import jQuery from 'jquery';
 let ServerActions =  {
 
     //Esta función es un actionCreator
-    receiveLinks(links) {
-        //Lanzar un acción de tipo RECEIVE_LINKS con los links incluidos
-        console.log('- (3) Action dispatched: ' + ActionTypes.RECEIVE_LINKS);
+    receiveAthletes(athletes) {
+        //Lanzar un acción de tipo RECEIVE_ATHLETES con los links incluidos
+        console.log('- (3) athletesAction : Dispatched action: ' + ActionTypes.RECEIVE_ATHLETES);
         
         AppDispatcher.dispatch({
-            actionType: ActionTypes.RECEIVE_LINKS,
-            links: links
+            actionType: ActionTypes.RECEIVE_ATHLETES,
+            athletes: athletes
         });
     }
 };

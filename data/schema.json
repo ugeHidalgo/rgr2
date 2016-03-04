@@ -13,7 +13,30 @@
           "description": null,
           "fields": [
             {
-              "name": "links",
+              "name": "store",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Store",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Store",
+          "description": null,
+          "fields": [
+            {
+              "name": "athletes",
               "description": null,
               "args": [],
               "type": {
@@ -52,7 +75,7 @@
               "deprecationReason": null
             },
             {
-              "name": "title",
+              "name": "firstName",
               "description": null,
               "args": [],
               "type": {
@@ -64,7 +87,7 @@
               "deprecationReason": null
             },
             {
-              "name": "description",
+              "name": "secondName",
               "description": null,
               "args": [],
               "type": {
@@ -76,7 +99,43 @@
               "deprecationReason": null
             },
             {
-              "name": "url",
+              "name": "address",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "city",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "country",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tlf",
               "description": null,
               "args": [],
               "type": {

@@ -13,7 +13,7 @@ class Header extends React.Component {
 					<ul className="nav navbar-nav">
 						<li><Link to='/homepage'>Home</Link></li>
 						<li><a href='graphql'>GraphiQl</a></li>
-						<li><Link to='/linkslist'>Links</Link></li>
+						<li><Link to='/athletesList'>AthletesList</Link></li>
 						<li><Link to='/about'>About</Link></li>
 					</ul>
 					<div className="navbar-right">

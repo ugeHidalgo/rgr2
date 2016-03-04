@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, Link} from 'react-router';
 
 import Header from '../common/header/header';
-import LinksList from "../linksList/linksList";
+import LinksList from "../athlete/athletesList";
 import Footer from '../common/footer/footer';
 
 import jQuery from 'jquery';
