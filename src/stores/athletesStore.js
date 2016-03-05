@@ -16,7 +16,6 @@ class AthletesStore extends EventEmitter{
             super(props);
             AppDispatcher.register(action=>{ //action viene de la action enviada en severActions.js
                 //El swith discrimina las acciones que el store debe atender.
-                debugger;
                 switch (action.actionType) {
                     case ActionTypes.RECEIVE_ATHLETES:
                             _athletes = action.athletes;

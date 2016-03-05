@@ -16,36 +16,18 @@ let Schema = (db) => {
 		name: 'Store',
 		fields: ()=>({
 			athletes: {
-				type: new GraphQLList(athletType),
+				type: new GraphQLList(athleteType),
 				resolve: () => db.collection('athletes').find({}).toArray()
+			},
+			competitions: {
+				type: new GraphQLList(competitionType),
+				resolve: () => db.collection('competitions').find({}).toArray()
 			}
 		})
 	});
 
-	// let linkType = new GraphQLObjectType({
-	// 	name : 'Link',
-	// 	fields: ()=> ({
-	// 		_id: {type: GraphQLString},
-	// 		title: {type: GraphQLString},
-	// 		description: {type: GraphQLString},
-	// 		url: {type: GraphQLString} 
-	// 	})
-	// });
-
-	// let schema = new GraphQLSchema({
-	// 	query: new GraphQLObjectType({
-	// 		name: 'Query',
-	// 		fields: ()=>({
-	// 			store: {
-	// 				type: storeType,
-	// 				resolve: () => store
-	// 			}
-	// 		})
-	// 	})
-	// });
-
-	let athletType = new GraphQLObjectType({
-		name : 'Link',
+	let athleteType = new GraphQLObjectType({
+		name : 'Athlete',
 		fields: ()=> ({
 			_id: {type: GraphQLString},
 			firstName: {type: GraphQLString},
@@ -53,7 +35,19 @@ let Schema = (db) => {
 			address: {type: GraphQLString},
 			city: {type: GraphQLString},
 			country : {type: GraphQLString},
-			tlf: {type: GraphQLString}
+			tlf: {type: GraphQLString},
+			sex: {type: GraphQLString}
+		})
+	});
+
+	let competitionType = new GraphQLObjectType({
+		name : 'Competition',
+		fields: ()=> ({
+			_id: {type: GraphQLString},
+			name: {type: GraphQLString},
+			type: {type: GraphQLString},
+			city: {type: GraphQLString},
+			country : {type: GraphQLString}
 		})
 	});
 

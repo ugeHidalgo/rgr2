@@ -5,11 +5,11 @@ import jQuery from 'jquery';
 
 
 //Private variable local para contener los links
-let _links = [];
+let _competitions = [];
 
 //Sin ES6 se usaba object-assign del modulo assign para hacer que el
 //store pudiera extender la clase EventEmitter. Con ES6 es más fácil.
-class LinkStore extends EventEmitter{
+class CompetitionsStore extends EventEmitter{
     
         //Registrar el AppDispatcher usando el constructor
         constructor(props){
@@ -17,11 +17,11 @@ class LinkStore extends EventEmitter{
             AppDispatcher.register(action=>{ //action viene de la action enviada en severActions.js
                 //El swith discrimina las acciones que el store debe atender.
                 switch (action.actionType) {
-                    case ActionTypes.RECEIVE_LINKS:
-                            _links = action.links;
+                    case ActionTypes.RECEIVE_COMPETITIONS:
+                            _competitions = action.competitions;
                             
                             //Una vez asignada esto al store hay que emitir que se ha produciodo un cambio en el store.
-                            console.log ('- (4) Link store emits en event: '+ 'change');
+                            console.log ('- (4) competitionsStore : Emits en event: '+ 'change');
                             this.emit("change");
                         break;
                 
@@ -35,9 +35,9 @@ class LinkStore extends EventEmitter{
         
         //Método que devuelve todos los links
         getAll(){
-            return _links;
+            return _competitions;
         }
 };
 
 
-export default new LinkStore();
+export default new CompetitionsStore();

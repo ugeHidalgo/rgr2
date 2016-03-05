@@ -2,7 +2,7 @@ import AppDispatcher from '../appDispatcher'; //Require al dispatcher de la app
 import {ActionTypes} from '../constants/constants'; //la definición de las acciones
 import jQuery from 'jquery';
 
-let ServerActions =  {
+let ServerAthleteActions =  {
 
     //Esta función es un actionCreator
     receiveAthletes(athletes) {
@@ -17,4 +17,4 @@ let ServerActions =  {
 };
 
 
-export default ServerActions;
+export default ServerAthleteActions;

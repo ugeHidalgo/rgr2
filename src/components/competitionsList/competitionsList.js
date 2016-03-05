@@ -1,21 +1,24 @@
 import React, { PropTypes } from "react";
 import Relay from "react-relay";
-import './athletesList.css';
+import './competitionsList.css';
 import jQuery from 'jquery';
-import AthletesApi from '../../api/athletesApi';
-import AthletesStore from '../../stores/athletesStore';
+import CompetitionsApi from '../../api/competitionsApi';
+import CompetitionsStore from '../../stores/competitionsStore';
 
 //Esta función se usa para obtener todos los links del store
 let _getAppState = () => {
-     return {athletes : AthletesStore.getAll()};  
+    return {competitions : CompetitionsStore.getAll()};  
 };
 
-class AthetesList extends React.Component {
 
+class CompetitionsList extends React.Component {
+
+	//Sirven para forzar validaciones, en este caso limit debe ser un número.
     static propTypes = {
         limit: React.PropTypes.number
     };
         
+    //Sirven para establecer un valor por defecto en caso de que falte.
     static defaultProps = {
         limit: 5
     };
@@ -33,45 +36,44 @@ class AthetesList extends React.Component {
 
     componentDidMount(){
 
-        AthletesApi.fetchAthletes();
+        CompetitionsApi.fetchCompetitions();
 
         //Una vez mostrada la pantalla crea un evento que se lanze cuando haya un change
-        AthletesStore.on('change',this.onChange);
+        CompetitionsStore.on('change',this.onChange);
     }
 
     componentWilUnmount() {
 
         //Quita el evento antes de dejar de mostrar la pantalla al salir de ella
-        AthletesStore.removeListener('change',this.onChange);
+        CompetitionsStore.removeListener('change',this.onChange);
     }
     
     //Este método detecta el event change y reresca el componente.
     onChange(){
-        console.log ('- (5) athletesList component : Component has detected a change in the store');
+        console.log ('- (5) competitionsList component : Component has detected a change in the store');
         this.setState(_getAppState());
     }
 
     getFooterCounter() {
-    	if (this.props.limit<=this.state.athletes.length) {
+    	if (this.props.limit<=this.state.competitions.length) {
     		return this.props.limit;
     	}
-    	return this.state.athletes.length;
+    	return this.state.competitions.length;
 	}
+
 
 	render() {
 
-					//Para acceder al store del schema usaremos this.props (con relay)
-		let row = this.state.athletes.slice(0,this.props.limit).map(athlete => {
+					//Para acceder al store del schema usaremos this.props
+
+		let row = this.state.competitions.slice(0,this.props.limit).map(competition => {
 			return (
-				<tr key={athlete._id}>
+				<tr key={competition._id}>
 					<td><input type="checkbox" aria-label="..."/></td>
-					<td>{athlete.secondName}</td>
-					<td>{athlete.firstName}</td>
-					<td>{athlete.address}</td>
-					<td>{athlete.city}</td>
-					<td>{athlete.country}</td>
-					<td>{athlete.tlf}</td>
-					<td>{athlete.sex}</td>
+					<td>{competition.name}</td>
+					<td>{competition.type}</td>
+					<td>{competition.city}</td>
+					<td>{competition.country}</td>
 				</tr>
 			)
 		});
@@ -83,13 +85,10 @@ class AthetesList extends React.Component {
 					<thead>
 						<tr>
 							<th></th>
-							<th>Second Name</th>
-							<th>First Name</th>
-							<th>Address</th>
+							<th>Name</th>
+							<th>Type</th>
 							<th>City</th>
 							<th>Country</th>
-							<th>Tlf</th>
-							<th>Sex</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -98,7 +97,7 @@ class AthetesList extends React.Component {
 				</table>
 				<div className="panel-footer">
 					<div className="footerText">
-						<p>Total Athletes  : {this.getFooterCounter()}/{this.state.athletes.length}</p>
+						<p>Competitions : {this.getFooterCounter()}/{this.state.competitions.length}</p>
 					</div>
 				</div>
 			</div>
@@ -106,5 +105,20 @@ class AthetesList extends React.Component {
 	}
 }
 
+//Declare data requirements for LinksList component
+// LinksList = Relay.createContainer (LinksList, {
+// 	fragments: {
+// 		store: () => Relay.Ql`
+// 			fragment on Store {
+// 				links {
+// 					_id,
+// 					title,
+// 					url,
+// 					description
+// 				}
+// 			}
+// 		`
+// 	}
+// });
 
-export default AthetesList
+export default CompetitionsList
