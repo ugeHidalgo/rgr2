@@ -3,7 +3,6 @@ import React from "react";
 import {
 		Router,
 		Route,
-		hashHistory,
 		IndexRoute
 	} from "react-router";
 
@@ -16,7 +15,7 @@ import About from "./components/common/about";
 import NotFound from "./components/common/notfoundpage";
 
 var routes = (
-	<Router history={hashHistory}>
+	<Router>
 		<Route path="/" component={App}>
 			<IndexRoute component={Home}/>
 			<Route path="/homepage" component={Home}/>

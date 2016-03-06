@@ -1,6 +1,8 @@
 import React from 'react'; 
 import ReactDOM from "react-dom";
-import { Router, Route, browserHistory } from 'react-router';
+import { Router,
+		 browserHistory, 	
+		 Route } from 'react-router';
 import routes from '../../routes';
 
 import Relay from "react-relay";
@@ -19,7 +21,7 @@ class HomeRoute extends Relay.Route {
 
 
 ReactDOM.render(<Router 
-					history = {browserHistory}
+					history = {browserHistory}  //Do not declare history on routes.js
 					routes={routes}/> 
 				,document.getElementById('app'));
 
@@ -31,9 +33,11 @@ ReactDOM.render(<Router
 
 // console.log (
 // 	Relay.QL`
-// 	query Test {
-// 		links {
-// 			title
+// 	query {
+// 		store {
+// 			athlete (dni:"90103001") {
+// 				firstName
+// 			}
 // 		}
 // 	}`
 // )

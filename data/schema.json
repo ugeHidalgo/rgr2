@@ -4,7 +4,9 @@
       "queryType": {
         "name": "RootQuery"
       },
-      "mutationType": null,
+      "mutationType": {
+        "name": "Mutation"
+      },
       "subscriptionType": null,
       "types": [
         {
@@ -289,6 +291,40 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Mutation",
+          "description": null,
+          "fields": [
+            {
+              "name": "addOrReplaceAthlete",
+              "description": null,
+              "args": [
+                {
+                  "name": "_id",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Athlete",
                 "ofType": null
               },
               "isDeprecated": false,

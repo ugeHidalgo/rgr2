@@ -31,13 +31,20 @@ class AthletesStore extends EventEmitter{
                             this.emit("change");
                         break;
                 
+                    // case ActionTypes.SAVE_ATHLETE:
+                    //         //_athletes = action.athletes;
+                            
+                    //         //Una vez asignada esto al store hay que emitir que se ha produciodo un cambio en el store.
+                    //         console.log ('- (4) athletesStore: Emits en event: '+ 'change');
+                    //         this.emit("change");
+                    //     break;
+
                     default:
                         //do nothing
                         break;
                 }
             });
         }
-        
         
         getAll(){
             return _athletes;

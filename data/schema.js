@@ -72,6 +72,7 @@ let Schema = (db) => {
 	});
 
 	let schema = new GraphQLSchema({
+
 		query: new GraphQLObjectType({
 			name: 'RootQuery',
 			fields: ()=>({
@@ -80,6 +81,21 @@ let Schema = (db) => {
 					resolve: () => store
 				}
 			})
+		}),
+
+		mutation: new GraphQLObjectType({
+			name: 'Mutation',
+			fields: {
+				addOrReplaceAthlete: {
+					type: athleteType,
+					args: {
+						_id: {type: GraphQLString}
+					},
+					resolve: (obj,{_id}) => {
+
+					}
+				}
+			}
 		})
 	});
 

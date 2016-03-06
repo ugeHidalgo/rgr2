@@ -38,7 +38,7 @@ class AthetesList extends React.Component {
 
     componentDidMount(){
 
-        AthletesApi.fetchAthletes();
+        AthletesApi.getAllAthletes();
 
         //Una vez mostrada la pantalla crea un evento que se lanze cuando haya un change
         AthletesStore.on('change',this.onChange);
