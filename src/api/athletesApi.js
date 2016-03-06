@@ -7,7 +7,7 @@ let AthletesAPI = {
       console.log ('- (1) Athletes API: Fetching athletes data...');
       
       post("/graphql",{
-          query: '{store{athletes{_id,firstName,secondName,address,tlf,city,country,sex}}}' //esta es la query usada para obtener los datos
+          query: '{store{athletes{_id,dni,firstName,lastName,address,tlf,city,country,sex}}}' //esta es la query usada para obtener los datos
         }).done (athletesResponse => {
           console.log ('- (2) Athletes API: Athletes data was fetched.');
           
@@ -16,7 +16,6 @@ let AthletesAPI = {
           ServerAthleteActions.receiveAthletes(athletesResponse.data.store.athletes);
       });
   }
-    
 };
 
 export default AthletesAPI;

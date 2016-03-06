@@ -2,14 +2,14 @@
   "data": {
     "__schema": {
       "queryType": {
-        "name": "Query"
+        "name": "RootQuery"
       },
       "mutationType": null,
       "subscriptionType": null,
       "types": [
         {
           "kind": "OBJECT",
-          "name": "Query",
+          "name": "RootQuery",
           "description": null,
           "fields": [
             {
@@ -35,6 +35,33 @@
           "name": "Store",
           "description": null,
           "fields": [
+            {
+              "name": "athlete",
+              "description": null,
+              "args": [
+                {
+                  "name": "dni",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Athlete",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "athletes",
               "description": null,
@@ -74,12 +101,34 @@
           "possibleTypes": null
         },
         {
+          "kind": "SCALAR",
+          "name": "String",
+          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "Athlete",
           "description": null,
           "fields": [
             {
               "name": "_id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "dni",
               "description": null,
               "args": [],
               "type": {
@@ -103,7 +152,7 @@
               "deprecationReason": null
             },
             {
-              "name": "secondName",
+              "name": "lastName",
               "description": null,
               "args": [],
               "type": {
@@ -177,16 +226,6 @@
           ],
           "inputFields": null,
           "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "String",
-          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
         },

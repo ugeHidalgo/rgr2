@@ -3,40 +3,33 @@ import {
 	GraphQLObjectType,
 	GraphQLList,
 	GraphQLInt,
-	GraphQLString
+	GraphQLString,
+	GraphQLNonNull
 }
 from 'graphql';
+import Lodash  from 'lodash';
 
+let _clone = (item) => {
+    return JSON.parse(JSON.stringify(item)); //return cloned copy so that the item is passed by value instead of by reference
+};
 
 let Schema = (db) => {
 
 	let store = {};
 
-	let storeType = new GraphQLObjectType({
-		name: 'Store',
-		fields: ()=>({
-			athletes: {
-				type: new GraphQLList(athleteType),
-				resolve: () => db.collection('athletes').find({}).toArray()
-			},
-			competitions: {
-				type: new GraphQLList(competitionType),
-				resolve: () => db.collection('competitions').find({}).toArray()
-			}
-		})
-	});
-
 	let athleteType = new GraphQLObjectType({
 		name : 'Athlete',
 		fields: ()=> ({
 			_id: {type: GraphQLString},
+			dni: {type: GraphQLString},
 			firstName: {type: GraphQLString},
-			secondName: {type: GraphQLString},
+			lastName: {type: GraphQLString},
 			address: {type: GraphQLString},
 			city: {type: GraphQLString},
 			country : {type: GraphQLString},
 			tlf: {type: GraphQLString},
-			sex: {type: GraphQLString}
+			sex: {type: GraphQLString},
+			//roadMap: {type: GraphQLList(GraphQLString)}
 		})
 	});
 
@@ -51,9 +44,36 @@ let Schema = (db) => {
 		})
 	});
 
+	let storeType = new GraphQLObjectType({
+		name: 'Store',
+		fields: ()=>({
+			athlete: {
+				type: new GraphQLList(athleteType),
+				args: {
+					dni: {type: GraphQLString}
+				},
+				resolve : (root, {dni} ) => {
+
+					console.log ("dni = "+ {dni});
+					let athlete = Lodash.find(db.collection('athletes'),{dni: {dni}});
+					return _clone(athlete);
+				}
+			},
+
+			athletes: {
+				type: new GraphQLList(athleteType),
+				resolve: () => db.collection('athletes').find({}).toArray()
+			},
+			competitions: {
+				type: new GraphQLList(competitionType),
+				resolve: () => db.collection('competitions').find({}).toArray()
+			}
+		})
+	});
+
 	let schema = new GraphQLSchema({
 		query: new GraphQLObjectType({
-			name: 'Query',
+			name: 'RootQuery',
 			fields: ()=>({
 				store: {
 					type: storeType,

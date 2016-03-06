@@ -1,6 +1,6 @@
 import React from 'react'; 
 import ReactDOM from "react-dom";
-import { Router, Route } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import routes from '../../routes';
 
 import Relay from "react-relay";
@@ -18,7 +18,10 @@ class HomeRoute extends Relay.Route {
 }
 
 
-ReactDOM.render(<Router routes={routes}/> ,document.getElementById('app'));
+ReactDOM.render(<Router 
+					history = {browserHistory}
+					routes={routes}/> 
+				,document.getElementById('app'));
 
 /* Se obtiene el elemento app del index.html y ahí se renderiza el contenido 
    mediante routes y así dependiendo de la url fijada devolverá un objeto u otro.

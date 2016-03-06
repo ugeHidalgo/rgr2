@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+import { Link } from "react-router";
 import Relay from "react-relay";
 import './athletesList.css';
 import jQuery from 'jquery';
@@ -8,6 +9,10 @@ import AthletesStore from '../../stores/athletesStore';
 //Esta función se usa para obtener todos los links del store
 let _getAppState = () => {
      return {athletes : AthletesStore.getAll()};  
+};
+
+let _getSelectedAthlete = () => {
+	return {athlete : AthletesStore.getSelectedAthlete()};  
 };
 
 class AthetesList extends React.Component {
@@ -47,7 +52,7 @@ class AthetesList extends React.Component {
     
     //Este método detecta el event change y reresca el componente.
     onChange(){
-        console.log ('- (5) athletesList component : Component has detected a change in the store');
+        console.log ('- (5) athletesList component : Component has detected a change in the store.');
         this.setState(_getAppState());
     }
 
@@ -62,10 +67,12 @@ class AthetesList extends React.Component {
 
 					//Para acceder al store del schema usaremos this.props (con relay)
 		let row = this.state.athletes.slice(0,this.props.limit).map(athlete => {
+
 			return (
 				<tr key={athlete._id}>
 					<td><input type="checkbox" aria-label="..."/></td>
-					<td>{athlete.secondName}</td>
+					<td><Link to={`/manageAthleteForm/${athlete.dni}`}>{athlete.dni}</Link></td>
+					<td>{athlete.lastName}</td>
 					<td>{athlete.firstName}</td>
 					<td>{athlete.address}</td>
 					<td>{athlete.city}</td>
@@ -78,12 +85,13 @@ class AthetesList extends React.Component {
 
 		return (
 			<div className="panel panel-primary">
-				<div className="panel-heading">Usefull links</div>
+				<div className="panel-heading">Athletes</div>
 				<table className='table'>
 					<thead>
 						<tr>
 							<th></th>
-							<th>Second Name</th>
+							<th>DNI</th>
+							<th>Last Name</th>
 							<th>First Name</th>
 							<th>Address</th>
 							<th>City</th>

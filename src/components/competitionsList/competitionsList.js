@@ -80,7 +80,7 @@ class CompetitionsList extends React.Component {
 
 		return (
 			<div className="panel panel-primary">
-				<div className="panel-heading">Usefull links</div>
+				<div className="panel-heading">Competitions</div>
 				<table className='table'>
 					<thead>
 						<tr>
